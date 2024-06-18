@@ -1,6 +1,24 @@
 #descuento salud 7% y afp 12%
 import csv
 
+#registro de trabajadores
+def registrar_trabajador(lista):
+    lista_trabajadores.append(lista)
+    return lista_trabajadores
+
+#listar trabajadores
+def listar_trabajadores(lista):
+    for i in lista:
+        print(f'Nombre: {i[0]} | Cargo: {i[1]} | Sueldo: {i[2]} | Desc. salud: {i[3]} | Desc. AFP: {i[4]} | Sueldo liquido: {i[5]}')
+
+#imprimir planilla de sueldos
+def imprimir(lista):
+    with open('planilla_sueldos.txt','w',newline='') as archivo_txt:
+        escribir = csv.writer(archivo_txt)
+        escribir.writerow(['Nombre','Cargo','Sueldo','Desc. salud','Desc AFP','Sueldo liquido'])
+        for i in lista:
+            escribir.writerow(i)
+
 lista_trabajadores = []
 
 while True:
@@ -14,11 +32,7 @@ while True:
     opc = int(input('Ingrese la opcion: '))
     
     match opc:
-        case 1:
-            def registrar_trabajador(lista):
-                lista_trabajadores.append(lista)
-                return lista_trabajadores        
-            
+        case 1:       
             nomTrab = input('Ingrese nombre de trabajador: ')
             cargo = input('ingrese el cargo: ')
             sueldo = int(input('ingrese el sueldo bruto: '))
@@ -29,19 +43,8 @@ while True:
             registrar_trabajador(datos_trabajador)
             
         case 2:
-            def listar_trabajadores(lista):
-                for i in lista:
-                    print(f'Nombre: {i[0]} | Cargo: {i[1]} | Sueldo: {i[2]} | Desc. salud: {i[3]} | Desc. AFP: {i[4]} | Sueldo liquido: {i[5]}')
-            
             listar_trabajadores(lista_trabajadores)    
-        case 3:
-            def imprimir(lista):
-                with open('planilla_sueldos.txt','w',newline='') as archivo_txt:
-                    escribir = csv.writer(archivo_txt)
-                    escribir.writerow(['Nombre','Cargo','Sueldo','Desc. salud','Desc AFP','Sueldo liquido'])
-                    for i in lista:
-                        escribir.writerow(i)
-                
+        case 3:   
             print('-'*20)
             print('1.-Imprimir todos los cargos')
             print('2.-Seleccionar algun cargo especifico')
