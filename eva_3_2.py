@@ -2,7 +2,6 @@
 
 import csv
 import openpyxl
-import openpyxl.workbook
 
 def registrar_trabajador(lista):
     lista_trabajadores.append(lista)
